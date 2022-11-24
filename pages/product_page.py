@@ -2,6 +2,7 @@ from .base_page import BasePage
 from .locators import ProductPageLocators
 import time
 
+
 class ProductPage(BasePage):
 
     def should_be_add_to_cart_button(self):
@@ -24,3 +25,9 @@ class ProductPage(BasePage):
         product_name_in_cart = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_CART).text
         print(f'Product name "{product_name}", product name in cart "{product_name_in_cart}"')
         assert product_name == product_name_in_cart, "Price in the cart does not match the price of the product"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is presented, but should not be"
+
+    def should_see_as_disppearing_message(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is presented, but should not be"
