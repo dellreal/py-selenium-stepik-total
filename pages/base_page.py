@@ -3,6 +3,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from .locators import BasePageLocators
 import math
+import time
 
 
 class BasePage:
@@ -12,6 +13,7 @@ class BasePage:
 
     def open(self):
         self.browser.get(self.url)
+        time.sleep(3)
 
     def go_to_login_page(self):
         login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
